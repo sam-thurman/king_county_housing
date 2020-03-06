@@ -33,7 +33,7 @@ def stats_from_columns(df, list_of_cols, dependent = 'SalePrice'):
                if the test fails for whatever reason it will be set to 'VIF failed'
     """
     dct = {"columns" : list_of_cols}
-    model = get_model(df, list_of_cols, dependent) 
+    model = get_model(df, list_of_cols, dependent)
     dct["ols"] = model
     dct['rainbow'] = get_rainbow(model)
     dct['homoscadasticity'] = get_homoscadasticity(df, list_of_cols, dependent, model)
@@ -51,8 +51,11 @@ def get_rainbow(fsm):
 def get_homoscadasticity(df, list_of_cols, dependent, fsm):
     y = df[dependent]
     y_hat = fsm.predict()
-    lm, lm_p_value, fvalue, f_p_value = het_breuschpagan(y-y_hat, df[list_of_cols])
-    return {"Lagrange Multiplier p-value" : lm_p_value, "F-statistic p-value" : f_p_value}
+    try:
+        lm, lm_p_value, fvalue, f_p_value = het_breuschpagan(y-y_hat, df[list_of_cols])
+        return {"Lagrange Multiplier p-value" : lm_p_value, "F-statistic p-value" : f_p_value}
+    except:
+        return 'Failed to get homoscadasticity'
     
 def get_vif(df, list_of_cols):
     try:
@@ -100,7 +103,7 @@ def stats_of_combinations(df, n, columns = None, filter_vif = True):
             
         stats_dict = stats_from_columns(df, list(i))
         if filter_vif:
-            if (stats_dict['vif']['VIF'] > 5).sum() == 0:
+            if type(stats_dict['vif']) != type('a') and (stats_dict['vif']['VIF'] > 5).sum() == 0:
                 combination_list.append(stats_dict)
         else:
             combination_list.append(stats_dict)
