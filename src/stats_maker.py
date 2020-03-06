@@ -43,16 +43,32 @@ def stats_from_columns(df, list_of_cols, dependent='SalePrice'):
 
 
 def get_model(df, list_of_cols, dependent='SalePrice'):
+    '''
+    Gives the model for a given dataframe on a list of columns in respect to a dependent variable
+    
+    Parameters
+    ----------
+    df: Dataframe that holds the information for comparisons
+    list_of_cols: list of columns to be the independent variables
+    dependent: The dependent variable for the regression model.
+               Default: SalePrice
+    '''
     formula = f"{dependent} ~ " + " + ".join(list_of_cols)
     return ols(formula=formula, data=df).fit()
 
 
 def get_rainbow(fsm):
+    """
+    Gives the rainbow statistic for a given model
+    """
     rainbow_statistic, rainbow_p_value = linear_rainbow(fsm)
     return {'statistic': rainbow_statistic, 'p-value': rainbow_p_value}
 
 
 def get_homoscadasticity(df, list_of_cols, dependent, fsm):
+    """
+    Gives the homoscadasticity statistic for a given model
+    """
     y = df[dependent]
     y_hat = fsm.predict()
     try:
@@ -64,6 +80,9 @@ def get_homoscadasticity(df, list_of_cols, dependent, fsm):
 
 
 def get_vif(df, list_of_cols):
+    """
+    Gives the variance inflation factor between given columns
+    """
     try:
         if len(list_of_cols) > 1:
             rows = df[list_of_cols].values
@@ -81,6 +100,9 @@ def get_vif(df, list_of_cols):
 def stats_of_combinations(df, n, columns=None, filter_vif=True):
     """
     WARNING --- Can lead to a lot of CPU usage and memory usage
+    
+    This was used for testing the highest r^2 of a length of combinations
+    
     Okay this is a lot. And is pretty stupid. It takes in a data frame and returns stats for all the combinations of n columns
     You can set filter_vif to false for smaller sizes of combinations (under 1000 resulting combinations)
         but I would reccomnd leaving it true for leager combinations 
