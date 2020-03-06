@@ -198,7 +198,7 @@ def make_merged_csv(new_files):
     print('PINs added to tables')
     merged = merge_all(dfs)
     cleaned = merged[(merged['SalePrice'] < 5000000) & (merged['SalePrice'] > 10)]
-    cleaned_2019 = cleaned[cleaned['DocumentDate'].str.contains('2019')]
+    cleaned_2019 = cleaned[cleaned['DocumentDate'].str.contains('2019')] # Change year in here to change year of table
     cleaned_2019.to_csv(path + 'housing2019.csv')
     return path + 'housing2019.csv'
 
