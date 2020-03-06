@@ -46,25 +46,6 @@ def bootstrapped_ttest_bin(df, col_name):
     return 'p-value: ', np.array(Ps).mean(), 'statistic: ', np.array(Ts).mean()
 
 
-def get_VIF(df, cols):
-
-    columns = cols
-    rows = df[columns].values
-    vif_df = pd.DataFrame()
-    vif_df['Feature'] = columns
-    vif_df['VIF'] = [variance_inflation_factor(
-        rows, i) for i in range(len(columns))]
-
-    return vif_df
-
-
-def generate_ols_summary(df, col_list):
-    string = 'SalePrice ~ '
-    string += ' + '.join(col_list)
-    fsm = ols(formula=string, data=df).fit()
-    return fsm
-
-
 def cohen_d(x, y):
     nx = len(x)
     ny = len(y)
