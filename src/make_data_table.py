@@ -24,6 +24,9 @@ list_of_files = [parcel_url, sale_url, res_url] # List of all the files to be do
 
 # Call this to build the required data table from the KC website
 def build_data_file():
+    '''
+    Retreives and builds the desired table for analysis
+    '''
     new_files = make_all_csv()
     print('New files downloaded: ' + str(new_files))
     new_file_path = make_merged_csv(new_files)
