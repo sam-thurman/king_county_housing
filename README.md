@@ -1,5 +1,7 @@
 # Relation of Home Prices to Home Features using King County Data
 
+To see overveiws of this project, navigate to the reports folder. If you'd like a more in depth look at our process and would like to interact with our findings, install Jupyter Lab to your machine and then fork and clone this repo.  Notebooks documenting our process are stored in `notebooks/exploratory` and a final notebook is stored in `notebooks/report`.
+
 # Process
  Our process started off with each of the three group members individually exploring the data.
 For example, what did certain column names of the data mean or how was the data represented (numbers vs text)?
