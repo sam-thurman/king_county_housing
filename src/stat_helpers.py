@@ -16,6 +16,9 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 
 def welch_ttest(df, col_name):
+    '''
+    Takes in a dataframe and a column name (as str) Performs a welch's t-test on a column of binary data
+    '''
     select_0s = df[df[col_name] == 0]['SalePrice']
     select_1s = df[df[col_name] == 1]['SalePrice']
     p_val = scipy.stats.ttest_ind(select_0s, select_1s, equal_var=False).pvalue
@@ -47,6 +50,10 @@ def bootstrapped_ttest_bin(df, col_name):
 
 
 def cohen_d(x, y):
+    '''
+    This function takes in x and y data for a feature (binary data: two subsets of the column where valus = 0 and 1).
+    Returns Cohen's D, measure of effect size of a feature
+    '''
     nx = len(x)
     ny = len(y)
     sx = np.std(x)
