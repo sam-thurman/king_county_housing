@@ -1,3 +1,6 @@
+'''
+importing necessary libraries and tools
+'''
 #-------------------------#
 import pandas as pd
 import numpy as np
@@ -27,6 +30,11 @@ def num_to_bin(list_of_cols):
 
 def filter_and_groom(unfiltered_df):
     '''
+    This function takes in our takes in our unfiltered data and returns a groomed dataframe with 
+    the columns we are interested in, and their values cleaned and in a usable format
+    '''
+
+    '''
     selecting interested columns
     '''
     groomed_df = unfiltered_df[['pin', 'SalePrice', 'SqFtTotLiving', 'SqFtOpenPorch',
@@ -39,7 +47,7 @@ def filter_and_groom(unfiltered_df):
                                 'OtherView', 'WaterSystem', 'SewerSystem', 'OtherProblems', 'YrBuilt',
                                 'YrRenovated', 'BldgGrade', 'Township', 'FpSingleStory', 'FpMultiStory']]
     '''
-    convert OtherProblems and PowerLines column (Ys, Ns) into 1s and 0s
+    convert OtherProblems and PowerLines column (Ys, Ns) into binary values
     '''
 
     for (i, item) in enumerate(groomed_df['OtherProblems']):
@@ -52,10 +60,11 @@ def filter_and_groom(unfiltered_df):
             groomed_df['PowerLines'][i] = 0
         elif item == 'Y':
             groomed_df['PowerLines'][i] = 1
-
-    # ViewScore is a composite of three views (SeattleSkyline, LakeWashington, LakeSammamish).  These three views were found to have the most impact on sale price and
-    # capturing variance in our model so we decided to use these three values summed as it's own feature.  This is not a
-    # score for the total quality of view from the house, simply views of these three features.
+    '''
+    ViewScore is a composite of three views (SeattleSkyline, LakeWashington, LakeSammamish).  These three views were found to have the most impact on sale price and
+    capturing variance in our model so we decided to use these three values summed as it's own feature.  This is not a
+    score for the total quality of view from the house, simply views of these three features.
+    '''
     columns = ['SeattleSkyline', 'LakeWashington', 'LakeSammamish']
     groomed_df['ViewScore'] = 0
     for column in columns:
@@ -85,7 +94,8 @@ def filter_and_groom(unfiltered_df):
 
 def load_and_wrangle_data(file_path):
     '''
-
+    this function grabs the csv containing unfiltered housing data fom 2019
+    and calls filter_and_groom to return an ungroomed and groomed version of our 2019 data
     '''
     ungroomed_df = pd.read_csv(file_path, encoding='latin-1')
     groomed_df = filter_and_groom(ungroomed_df)
