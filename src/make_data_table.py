@@ -7,7 +7,12 @@ import pandas as pd
 import warnings
 warnings.filterwarnings('ignore')
 
-path = '../data/' # Path to data Folder
+import os, sys
+module_path = os.path.abspath(os.path.join(os.pardir, os.pardir))
+if module_path not in sys.path:
+    sys.path.append(module_path)
+
+path = sys.path[-1] + '/data/' # Path to data Folder
 
 website_url = "https://aqua.kingcounty.gov/extranet/assessor/" # Path to website containing downloads
 
@@ -216,7 +221,6 @@ def delete_files(files, path = path):
     Returns
     -------
     nothing :)
-    
     '''
     for file in files:
         os.remove(path + file)
