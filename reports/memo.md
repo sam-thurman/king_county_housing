@@ -15,9 +15,9 @@ Key takeaways from our solution:
 
 Stakeholders should care about what we found because, we now have a working base model to use as a tool to guide and provide insight - regarding the correlation of home prices and specific home features. Our group’s findings can help home buyers, sellers, real estate investors and home builders. Certain home features are highly sought after in today’s real estate climate but not everything necessarily correlates to higher home prices. For example, our group found that the top 4 individual factors of home price are: Building grade, square footage, quality of view and whether or not there was a waterfront (or not) on the property.
 
-These four factors are interesting because it seems that the most important factors of a home and sale price are things like 'curb appeal' or an open layout floor plan with a nice big kitchen that has an island for cookinga and eating as well. Factors like square footage and view or waterfront are not that surprising though.
+These four factors are interesting because it seems that the most important factors of a home and sale price are things like 'curb appeal' or an open layout floor plan with a nice big kitchen that has an island for cooking and eating as well. Factors like square footage and view or waterfront are not that surprising though.
 
-Interestingly enough, we found that the nuisances of power lines on property as well as traffic noise and neglible amounts of impact on the sale price of a home. However, when we take into consideration the reality of the current housing market in the greater Seattle area - this makes sense since people are eager to buy and invest in the area regardless.
+Interestingly enough, we found that the nuisances of power lines on property as well as traffic noise had negligible amounts of impact on the sale price of a home. However, when we take into consideration the reality of the current housing market in the greater Seattle area - this makes sense since people are eager to buy and invest in the area regardless.
 
 Next steps:
 

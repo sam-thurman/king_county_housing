@@ -1,21 +1,31 @@
 # Relation of Home Prices to Home Features using King County Data
 
-To see overveiws of this project, navigate to the reports folder. If you'd like a more in depth look at our process and would like to interact with our findings, install Jupyter Lab to your machine and then fork and clone this repo.  Notebooks documenting our process are stored in `notebooks/exploratory` and a final notebook is stored in `notebooks/report`.
+To see overviews of this project, navigate to the `reports` folder. If you'd like a more in depth look at our process and would like to interact with our findings, install Jupyter Lab to your machine and then fork and clone this repo.  Notebooks documenting our process are stored in `notebooks/exploratory` and a final notebook is stored in `notebooks/report`.
 
 # Process
- Our process started off with each of the three group members individually exploring the data.
+Our process started off with each of the three group members individually exploring the data.
+
 For example, what did certain column names of the data mean or how was the data represented (numbers vs text)?
+
 After this initial exploration, our group came together to figure out what our working dataset should contain.
+
 According to the requirements of the project, our data should only contain housing data from 2019.
+
 This single file of data is what we having been working from in order to find the best correlations possible.
 
 # Methodology
 Trial and error has been our main method of trying to find what features from our data correlate to higher home prices.
+
 The specific way in which our group has been trying to find these relationship is by using a Logistic Regression model.
+
 One issue we have had to watch out for while using the Logistic Regression model is something called Multicollinearity.
+
 Testing for low multicollinearity scores, maximum of 5, is straightforward and documented in our group's code.
+
 Please note that a maximum score of 5 was set by our group and not a de facto standard to always use.
+
 To determine a strong correlation, between home feature(s) and home price, from the Logistic Regression model our group has been using the R-squared value.
+
 The closer to 1 the stronger the correlation, this is harder to find given that we have to account for the maximum multicollinearity score between various house features.
 
 # Findings
